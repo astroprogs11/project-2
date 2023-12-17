@@ -1,21 +1,33 @@
-# Infrastructure
-
-## AWS Zones
-Identify your zones here
-
-## Servers and Clusters
-
-### Table 1.1 Summary
-| Asset      | Purpose           | Size                                                                   | Qty                                                             | DR                                                                                                           |
-|------------|-------------------|------------------------------------------------------------------------|-----------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
-| Asset name | Brief description | AWS size eg. t3.micro (if applicable, not all assets will have a size) | Number of nodes/replicas or just how many of a particular asset | Identify if this asset is deployed to DR, replicated, created in multiple locations or just stored elsewhere |
-
-### Descriptions
-More detailed descriptions of each asset identified above.
+| # Infrastructure             |                              |                                                                          |                                                                   |                                                                                                                |
+|------------------------------|------------------------------|--------------------------------------------------------------------------|-------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
+| ## AWS Zones                 |                              |                                                                          |                                                                   |                                                                                                                |
+| Identify your zones here     |                              |                                                                          |                                                                   |                                                                                                                |
+| us-east-2a                   |                              |                                                                          |                                                                   |                                                                                                                |
+| us-east-2b                   |                              |                                                                          |                                                                   |                                                                                                                |
+| us-east-2c                   |                              |                                                                          |                                                                   |                                                                                                                |
+| us-west-1a                   |                              |                                                                          |                                                                   |                                                                                                                |
+| us-west-1b                   |                              |                                                                          |                                                                   |                                                                                                                |
+|                              |                              |                                                                          |                                                                   |                                                                                                                |
+|                              |                              |                                                                          |                                                                   |                                                                                                                |
+| ### Table 1.1 Summary        |                              |                                                                          |                                                                   |                                                                                                                |
+| Asset                        | Purpose                      | Size                                                                     | Qty                                                               | DR                                                                                                             |
+| ------------                 | -------------------          | ------------------------------------------------------------------------ | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Asset name                   | Brief description            | AWS size eg. t3.micro (if applicable, not all assets will have a size)   | Number of nodes/replicas or just how many of a particular asset   | Identify if this asset is deployed to DR, replicated, created in multiple locations or just stored elsewhere   |
+| Ubuntu-Web                   | EC2 Node                     | t2.micro                                                                 | 3                                                                 | Implemented in Primary (us-east-2)                                                                             |
+| Ubuntu-Web                   | EC2 Node                     | t2.micro                                                                 | 3                                                                 | Implemented in DR (us-west-1)                                                                                  |
+| udacity-db-cluster           | RDS Cluster with 2 instances | Aurora MySQL                                                             | 1                                                                 | Implemented in Primary (us-east-2)                                                                             |
+| udacity-db-cluster           | RDS Cluster with 2 instances | Aurora MySQL                                                             | 1                                                                 | Implemented in DR (us-west-1)                                                                                  |
+| VPC with IPs in Multiple AZs | VPC                          | VPC                                                                      | 1                                                                 | Implemented in Primary (us-east-2)                                                                             |
+| VPC with IPs in Multiple AZs | VPC                          | VPC                                                                      | 1                                                                 | Implemented in DR (us-west-1)                                                                                  |
+|                              |                              |                                                                          |                                                                   |                                                                                                                |
 
 ## DR Plan
 ### Pre-Steps:
-List steps you would perform to setup the infrastructure in the other region. It doesn't have to be super detailed, but high-level should suffice.
+Both sites are configured the same
+We use infrastructure as code (IaC) to do this 
 
 ## Steps:
-You won't actually perform these steps, but write out what you would do to "fail-over" your application and database cluster to the other region. Think about all the pieces that were setup and how you would use those in the other region
+Point DNS to secondary region
+This can be done with a name provider like Amazon route 53
+Failover database replication instances to another region
+Manually force the secondary region to become primary at the database level, or automatically failover the database by health checks
