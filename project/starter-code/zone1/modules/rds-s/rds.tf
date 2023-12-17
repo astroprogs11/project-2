@@ -37,6 +37,8 @@ resource "aws_rds_cluster" "udacity_cluster-s" {
 }
 
 resource "aws_rds_cluster_instance" "udacity_instance-s" {
+  engine               = "aurora-mysql"
+  engine_version       = "5.7.mysql_aurora.2.11.2"
   count                = 2
   identifier           = "udacity-db-instance-${count.index}-s"
   cluster_identifier   = aws_rds_cluster.udacity_cluster-s.id
