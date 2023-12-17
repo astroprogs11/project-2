@@ -61,7 +61,7 @@ output "db_instance_arn" {
 resource "aws_rds_cluster_instance" "udacity_instance" {
   engine               = "aurora-mysql"
   engine_version       = "5.7.mysql_aurora.2.11.2"
-  count                = 1
+  count                = 2
   identifier           = "udacity-db-instance-${count.index}"
   cluster_identifier   = aws_rds_cluster.udacity_cluster.id
   instance_class       = "db.t2.small"
