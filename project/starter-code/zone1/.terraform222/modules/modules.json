@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"vpc_west","Source":"./modules/vpc","Dir":"modules/vpc"},{"Key":"","Source":"","Dir":"."},{"Key":"project_ec2","Source":"./modules/ec2","Dir":"modules/ec2"},{"Key":"project_eks","Source":"./modules/eks","Dir":"modules/eks"},{"Key":"project_rds_p","Source":"./modules/rds-p","Dir":"modules/rds-p"},{"Key":"vpc","Source":"./modules/vpc","Dir":"modules/vpc"}]}
