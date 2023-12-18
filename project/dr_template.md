@@ -23,8 +23,8 @@
 
 ## Describtion
 Primary Ubuntu Web: EC2 Node with the hosted application with a skew of t3.micro and exists in us-east-2.
-Secondry Ubuntu Web: EC2 Node with the hosted application with a skew of t3.micro and exists in us-west-1.
-Primary udacity-db-cluster : The primary RDS database cluster which contains two instances. It's an Auroro MySQL DB and it exists in us-east-2.
+Secondry Ubuntu Web: EC2 Node with the hosted application with a skew of t3.micro and exists in us-west-1. This will be the nodes where the ALB will fail over to in case the primary application is down.
+Primary udacity-db-cluster : The primary RDS database cluster which contains two instances. It's an Auroro MySQL DB and it exists in us-east-2. This will be the DB cluster where the ALB will fail over to in case the primary cluster is down.
 Secondry udacity-db-cluster : The secondry RDS database cluster which contains two instances. It's an Auroro MySQL DB and it exists in us-west-1..
 Primary VPC: A VPC with IPs in Multiple AZs (us-east-2a - us-east-2b - us-east-2c).
 Secondry VPC: A VPC with IPs in Multiple AZs (us-west-1a - us-west-1b).
