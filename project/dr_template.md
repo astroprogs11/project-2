@@ -21,6 +21,16 @@
 | VPC with IPs in Multiple AZs | VPC                          | VPC                                                                      | 1                                                                 | Implemented in DR (us-west-1)                                                                                  |
 |                              |                              |                                                                          |                                                                   |                                                                                                                |
 
+## Describtion
+Primary Ubuntu Web: EC2 Node with the hosted application with a skew of t3.micro and exists in us-east-2.
+Secondry Ubuntu Web: EC2 Node with the hosted application with a skew of t3.micro and exists in us-west-1.
+Primary udacity-db-cluster : The primary RDS database cluster which contains two instances. It's an Auroro MySQL DB and it exists in us-east-2.
+Secondry udacity-db-cluster : The secondry RDS database cluster which contains two instances. It's an Auroro MySQL DB and it exists in us-west-1..
+Primary VPC: A VPC with IPs in Multiple AZs (us-east-2a - us-east-2b - us-east-2c).
+Secondry VPC: A VPC with IPs in Multiple AZs (us-west-1a - us-west-1b).
+
+
+
 ## DR Plan
 ### Pre-Steps:
 Both sites are configured the same
